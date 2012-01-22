@@ -14,7 +14,7 @@ class HTMLToPDFConverter(object):
         for k, v in kwargs.items():
             setattr(self.args_to_bin, k, v)
 
-    def convert(self, input_fp):
+    def convert(self, input_obj):
         # construct path for exec
         args = [self.path_to_bin, '-q']
         for k, v in self.args_to_bin.items():
@@ -28,7 +28,12 @@ class HTMLToPDFConverter(object):
 
         p = subprocess.Popen(args, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE)
-        stdout, stderr = p.communicate(input_fp.read())
+
+        if hasattr(input_obj, 'read'):
+            i = input_obj.read()
+        else:
+            i = input_obj
+        stdout, stderr = p.communicate(i)
 
         if len(stderr) != 0:
             raise Exception(stderr)
