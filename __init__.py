@@ -17,7 +17,7 @@ class HTMLToPDFConverter(object):
             raise Exception('wkhtmltopdf not found at %s' % self.path_to_bin)
 
         for k, v in kwargs.items():
-            setattr(self.args_to_bin, k, v)
+            self.args_to_bin[k] = v
 
     def convert(self, input_obj, header=None, footer=None):
         temp_dir = tempfile.mkdtemp()
