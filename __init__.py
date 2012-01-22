@@ -21,7 +21,6 @@ class HTMLToPDFConverter(object):
             args.append('--%s' % k.replace('_', '-'))
             args.append(v)
         args += ['-', '-'] # input from stdin, output to stdout
-        print('invoking %s' % args)
 
         if not os.path.isfile(self.path_to_bin):
             raise Exception('wkhtmltopdf not found at %s' % self.path_to_bin)
