@@ -13,13 +13,13 @@ class HTMLToPDFConverter(object):
 
     def __init__(self, path_to_bin='/usr/bin/wkhtmltopdf', **kwargs):
         self.path_to_bin = path_to_bin
+        if not os.path.isfile(self.path_to_bin):
+            raise Exception('wkhtmltopdf not found at %s' % self.path_to_bin)
+
         for k, v in kwargs.items():
             setattr(self.args_to_bin, k, v)
 
     def convert(self, input_obj, header=None, footer=None):
-        if not os.path.isfile(self.path_to_bin):
-            raise Exception('wkhtmltopdf not found at %s' % self.path_to_bin)
-
         temp_dir = tempfile.mkdtemp()
         try:
             r = self._convert(temp_dir, input_obj, header, footer)
