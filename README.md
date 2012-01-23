@@ -42,4 +42,5 @@ to the binary using the `path_to_bin` keyword argument to the constructor, for e
 
 Other options may be given as keyword arguments to `HTMLToPDFConverter.convert()`.
 
-Full API documentation is available by running `pydoc pywkhtmltopdf`.
+Full API documentation is available by running `pydoc pywkhtmltopdf`, and
+example scripts can be found under the `samples/` directory.
