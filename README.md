@@ -12,7 +12,7 @@ their modified version of Qt4, so it is recommended you use the statically
 linked version.
 
 It has been tested against version [0.11.0_rc1 on
-amd64](http://wkhtmltopdf.googlecode.com/files/wkhtmltoimage-0.11.0_rc1-static-amd64.tar.bz2),
+amd64](http://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2),
 though it should work with newer versions.
 
 Usage
