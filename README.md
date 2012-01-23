@@ -8,8 +8,11 @@ headers and footers).
 
 To use, you must have wkhtmltopdf installed (either system-wide or locally).
 Some features (such as headers and footers) require it to be linked aginst
-their modified version of Qt4, so it is recommended you use the statically
-linked version.
+their modified version of Qt4, so it is recommended you use the version that
+is statically linked against Qt4. It depends on the following packages:
+
+* libXrender
+* libXext
 
 It has been tested against version [0.11.0_rc1 on
 amd64](http://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2),
