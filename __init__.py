@@ -4,6 +4,8 @@ import subprocess
 import tempfile
 
 class HTMLToPDFConverter(object):
+    """Class to convert HTML documents to PDF using wkhtmltopdf."""
+
     args_to_bin = {
         'margin_bottom': '1cm',
         'margin_left': '1cm',
@@ -20,6 +22,15 @@ class HTMLToPDFConverter(object):
             self.args_to_bin[k] = v
 
     def convert(self, input_obj, header=None, footer=None):
+        """Convert the given input to PDF and return the binary text of the PDF, suitable for writing to file.
+
+        Arguments:
+        input_obj -- a string or file-like object representing the HTML document to convert
+
+        Keyword arguments:
+        header -- a string representing the HTML header that should appear on each page of the PDF (optional)
+        footer -- a string representing the HTML footer that should appear on each page of the PDF (optional)
+        """
         temp_dir = tempfile.mkdtemp()
         try:
             r = self._convert(temp_dir, input_obj, header, footer)
