@@ -11,6 +11,10 @@ Some features (such as headers and footers) require it to be linked aginst
 their modified version of Qt4, so it is recommended you use the statically
 linked version.
 
+It has been tested against version [0.11.0_rc1 on
+amd64](http://wkhtmltopdf.googlecode.com/files/wkhtmltoimage-0.11.0_rc1-static-amd64.tar.bz2),
+though it should work with newer versions.
+
 Usage
 -----
 
@@ -27,10 +31,12 @@ A simple example to output some text to a PDF file on disk:
 ```
 
 If you haven't installed wkhtmltopdf system-wide, you must specify the path
-to the binary using the `path_to_bin` argument to the constructor, for example:
+to the binary using the `path_to_bin` keyword argument to the constructor, for example:
 
 ```python
 >>> c = pdf.HTMLToPDFConverter(path_to_bin='/home/user/wkhtmltopdf')
 ```
+
+Other options may be given as keyword arguments to `HTMLToPDFConverter.convert()`.
 
 Full API documentation is available by running `pydoc pywkhtmltopdf`.
