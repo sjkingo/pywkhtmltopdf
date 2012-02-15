@@ -21,7 +21,7 @@ class HTMLToPDFConverter(object):
         for k, v in kwargs.items():
             self.args_to_bin[k] = v
 
-    def convert(self, input_obj, header=None, footer=None):
+    def convert(self, input_obj, header=None, footer=None, orientation='portrait'):
         """Convert the given input to PDF and return the binary text of the PDF, suitable for writing to file.
 
         Arguments:
@@ -30,17 +30,18 @@ class HTMLToPDFConverter(object):
         Keyword arguments:
         header -- a string representing the HTML header that should appear on each page of the PDF (optional)
         footer -- a string representing the HTML footer that should appear on each page of the PDF (optional)
+        orientation -- either 'portrait' or 'landscape'
         """
         temp_dir = tempfile.mkdtemp()
         try:
-            r = self._convert(temp_dir, input_obj, header, footer)
+            r = self._convert(temp_dir, input_obj, header, footer, orientation)
         except:
             raise
         finally:
             shutil.rmtree(temp_dir)
         return r
 
-    def _convert(self, temp_dir, input_obj, header, footer):
+    def _convert(self, temp_dir, input_obj, header, footer, orientation):
         # construct path for exec
         args = [self.path_to_bin, '-q']
         for k, v in self.args_to_bin.items():
@@ -60,6 +61,9 @@ class HTMLToPDFConverter(object):
             with open(footer_filename, 'w') as fp:
                 fp.write(footer)
             args += ['--footer-html', footer_filename]
+
+        # orientation
+        args += ['-O', orientation]
 
         args += ['-', '-'] # input from stdin, output to stdout
 
