@@ -23,6 +23,7 @@ though it should work with newer versions.
 
     ```
     $ curl https://raw.githubusercontent.com/sjkingo/pywkhtmltopdf/master/install_wkhtmltopdf_binary.sh | sh
+    $ sudo dnf install libXrender libXext
     ```
 
 2. Install this package:
