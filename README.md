@@ -1,5 +1,4 @@
-pywkhtmltopdf
-=============
+# pywkhtmltopdf
 
 pywkhtmltopdf is a Python wrapper library around
 [wkhtmltopdf](http://code.google.com/p/wkhtmltopdf/), allowing HTML to PDF
@@ -18,11 +17,21 @@ It has been tested against version [0.11.0_rc1 on
 amd64](http://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2),
 though it should work with newer versions.
 
-You can install version 0.11.0\_rc1 by running `./install_wkhtmltopdf_binary.sh`. It will
-automatically choose the correct architecture for you.
+## Installation
 
-Usage
------
+1. Install wkhtmltopdf 0.11.0\_rc1:
+
+    ```
+    $ curl https://raw.githubusercontent.com/sjkingo/pywkhtmltopdf/master/install_wkhtmltopdf_binary.sh | sh
+    ```
+
+2. Install this package:
+
+    ```
+    $ pip install pywkhtmltopdf
+    ```
+
+## Usage
 
 A simple example to output some text to a PDF file on disk:
 
