@@ -5,6 +5,8 @@ pywkhtmltopdf is a Python wrapper library around
 conversion from Python code. It supports the most common options (including
 headers and footers).
 
+It fully supports Python 2.7, with basic Python 3 support provided in version 0.1.1.
+
 To use, you must have wkhtmltopdf installed (either system-wide or locally).
 Some features (such as headers and footers) require it to be linked aginst
 their modified version of Qt4, so it is recommended you use the version that
