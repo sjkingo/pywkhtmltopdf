@@ -18,7 +18,9 @@ as headers and footers. To use this version, we must download a statically
 linked binary from their website, instead of using your distribution's package:
 
 1. Go to the [wkhtmltopdf downloads page](http://wkhtmltopdf.org/downloads.html#testing)
+
 2. Pick the correct architecture of the Testing version and download it
+
 3. Extract and move the binary to a location on your `$PATH`:
 
    ```bash
