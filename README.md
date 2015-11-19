@@ -43,9 +43,9 @@ A simple example to output some text to a PDF file on disk (example in Python 2.
 ```python
 >>> from StringIO import StringIO
 >>> import pywkhtmltopdf as pdf
->>> h = StringIO('<p>Hello, world!</p>')
+>>> html = StringIO('<p>Hello, world!</p>')
 >>> c = pdf.HTMLToPDFConverter()
->>> output = c.convert(s)
+>>> output = c.convert(html)
 >>> with open('test.pdf', 'wb') as fp:
 ...     fp.write(output)
 ```
