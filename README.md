@@ -1,42 +1,42 @@
 # pywkhtmltopdf
 
-pywkhtmltopdf is a Python wrapper library around
-[wkhtmltopdf](http://code.google.com/p/wkhtmltopdf/), allowing HTML to PDF
-conversion from Python code. It supports the most common options (including
-headers and footers).
+pywkhtmltopdf is a small Python wrapper library around
+[wkhtmltopdf](http://wkhtmltopdf.org/), allowing HTML to PDF conversion from
+Python code.
 
 It fully supports Python 2.7, with basic Python 3 support provided in version 0.1.1.
 
-To use, you must have wkhtmltopdf installed (either system-wide or locally).
-Some features (such as headers and footers) require it to be linked aginst
-their modified version of Qt4, so it is recommended you use the version that
-is statically linked against Qt4. It depends on the following packages:
+## Obtaining wkhtmltopdf
 
-* libXrender
-* libXext
+This library requires the `wkhtmltopdf` binary be present on your system. A
+dependency of this binary is Qt4. Most distributions provide a wkhtmltopdf
+package, however it will be dynamically linked against vanilla Qt4 and will
+only support very basic conversion options.
 
-It has been tested against version [0.11.0_rc1 on
-amd64](http://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2),
-though it should work with newer versions.
+The creators of wkhtmltopdf have patched Qt4 to support the extra features such
+as headers and footers. To use this version, we must download a statically
+linked binary from their website, instead of using your distribution's package:
 
-## Installation
+1. Go to the [wkhtmltopdf downloads page](http://wkhtmltopdf.org/downloads.html#testing)
+2. Pick the correct architecture of the Testing version and download it
+3. Extract and move the binary to a location on your `$PATH`:
 
-1. Install wkhtmltopdf 0.11.0\_rc1:
+   ```bash
+   $ tar -xf wkhtmltox-*.xz
+   $ cp -p wkhtmltox/bin/wkhtmltopdf $BIN_PATH
+   ```
 
-    ```
-    $ curl https://raw.githubusercontent.com/sjkingo/pywkhtmltopdf/master/install_wkhtmltopdf_binary.sh | sh
-    $ sudo dnf install libXrender libXext
-    ```
+4. Install the required dependencies from your system's package manager:
 
-2. Install this package:
+   * libXrender
+   * libXext
+   * libX11
 
-    ```
-    $ pip install pywkhtmltopdf
-    ```
+5. Verify the output of `wkhtmltopdf -V` contains `(with patched qt)`
 
 ## Usage
 
-A simple example to output some text to a PDF file on disk:
+A simple example to output some text to a PDF file on disk (example in Python 2.7):
 
 ```python
 >>> from StringIO import StringIO
@@ -48,8 +48,9 @@ A simple example to output some text to a PDF file on disk:
 ...     fp.write(output)
 ```
 
-If you haven't installed wkhtmltopdf system-wide, you must specify the path
-to the binary using the `path_to_bin` keyword argument to the constructor, for example:
+If you haven't installed the `wkhtmltopdf` binary into a location on `$PATH`,
+you must specify the absolute path to the binary using the `path_to_bin`
+keyword argument to the constructor, for example:
 
 ```python
 >>> c = pdf.HTMLToPDFConverter(path_to_bin='/home/user/wkhtmltopdf')
@@ -58,4 +59,4 @@ to the binary using the `path_to_bin` keyword argument to the constructor, for e
 Other options may be given as keyword arguments to `HTMLToPDFConverter.convert()`.
 
 Full API documentation is available by running `pydoc pywkhtmltopdf`, and
-example scripts can be found under the `samples/` directory.
+example scripts can be found under the `samples/` directory of this repository.
