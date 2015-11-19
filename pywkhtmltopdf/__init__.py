@@ -3,7 +3,7 @@ import shutil
 import subprocess
 import tempfile
 
-__version__ = '0.1.1'
+__version__ = '0.1.2'
 
 class HTMLToPDFConverter(object):
     """Class to convert HTML documents to PDF using wkhtmltopdf."""
@@ -18,7 +18,7 @@ class HTMLToPDFConverter(object):
     def __init__(self, path_to_bin='/usr/bin/wkhtmltopdf', **kwargs):
         self.path_to_bin = path_to_bin
         if not os.path.isfile(self.path_to_bin):
-            raise Exception('wkhtmltopdf not found at %s' % self.path_to_bin)
+            raise Exception('wkhtmltopdf not found at %s; see https://github.com/sjkingo/pywkhtmltopdf#obtaining-wkhtmltopdf' % self.path_to_bin)
 
         for k, v in kwargs.items():
             self.args_to_bin[k] = v
