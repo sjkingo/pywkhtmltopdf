@@ -3,7 +3,7 @@ import shutil
 import subprocess
 import tempfile
 
-__version__ = '0.1.2'
+__version__ = '0.1.3'
 
 class HTMLToPDFConverter(object):
     """Class to convert HTML documents to PDF using wkhtmltopdf."""
@@ -73,9 +73,9 @@ class HTMLToPDFConverter(object):
                 stderr=subprocess.PIPE)
 
         if hasattr(input_obj, 'read'):
-            i = bytes(input_obj.read(), 'UTF-8')
+            i = input_obj.read()
         else:
-            i = bytes(input_obj, 'UTF-8')
+            i = input_obj
         stdout, stderr = p.communicate(i)
 
         return stdout
