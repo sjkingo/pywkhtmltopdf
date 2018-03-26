@@ -1,3 +1,7 @@
+**Please Note:** pywkhtmltopdf is no longer maintained as of March 2018. It does not support the latest versions of Python 3.
+
+Please instead try [pdfkit](https://github.com/JazzCore/python-pdfkit) as a replacement. It is much more feature complete and maintained.
+
 # pywkhtmltopdf
 
 pywkhtmltopdf is a small Python wrapper library around
